@@ -39,10 +39,8 @@ function statement(invoice, plays) {
         totalAmount += amountFor(perf);
     }
 
-    let volumeCredits = totalVolumeCredits();
-
     result += `total: ${usd(totalAmount)}\n`;
-    result += `points: ${volumeCredits}\n`;
+    result += `points: ${totalVolumeCredits()}\n`;
 
     return result;
 
