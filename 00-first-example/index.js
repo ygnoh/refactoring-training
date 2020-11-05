@@ -37,9 +37,7 @@ function statement(invoice, plays) {
         result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
     }
 
-    let totalAmount = appleSauce();
-
-    result += `total: ${usd(totalAmount)}\n`;
+    result += `total: ${usd(appleSauce())}\n`;
     result += `points: ${totalVolumeCredits()}\n`;
 
     return result;
