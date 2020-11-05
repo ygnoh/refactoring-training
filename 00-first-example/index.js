@@ -39,11 +39,7 @@ function statement(invoice, plays) {
         totalAmount += amountFor(perf);
     }
 
-    let volumeCredits = 0;
-
-    for (let perf of invoice.performances) {
-        volumeCredits += volumeCreditsFor(perf);
-    }
+    let volumeCredits = totalVolumeCredits();
 
     result += `total: ${usd(totalAmount)}\n`;
     result += `points: ${volumeCredits}\n`;
@@ -102,6 +98,16 @@ function statement(invoice, plays) {
         }
 
         return result;
+    }
+
+    function totalVolumeCredits() {
+        let volumeCredits = 0;
+
+        for (let perf of invoice.performances) {
+            volumeCredits += volumeCreditsFor(perf);
+        }
+
+        return volumeCredits;
     }
 }
 
