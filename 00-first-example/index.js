@@ -37,20 +37,20 @@ function statement(invoice, plays) {
 
     for (let perf of invoice.performances) {
         volumeCredits += volumeCreditsFor(perf);
-        result += `  ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+        result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
         totalAmount += amountFor(perf);
     }
 
-    result += `total: ${format(totalAmount / 100)}\n`;
+    result += `total: ${usd(totalAmount)}\n`;
     result += `points: ${volumeCredits}\n`;
 
     return result;
 
-    function format(aNumber) {
+    function usd(aNumber) {
         return new Intl.NumberFormat(
             "en-Us",
             {style: "currency", currency: "USD", minimumFractionDigits: 2}
-        ).format(aNumber);
+        ).format(aNumber / 100);
     }
 
     function playFor(aPerformance) {
