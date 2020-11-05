@@ -41,6 +41,24 @@ function statement(invoice, plays) {
 
     for (let perf of invoice.performances) {
         const play = plays[perf.playID];
+        let thisAmount = amountFor(perf, play);
+
+        volumeCredits += Math.max(perf.audience - 30, 0);
+
+        if ("comedy" === play.type) {
+            volumeCredits += Math.floor(perf.audience / 5);
+        }
+
+        result += `  ${play.name}: ${format(thisAmount / 100)} (${perf.audience} seats)\n`;
+        totalAmount += thisAmount;
+    }
+
+    result += `total: ${format(totalAmount / 100)}\n`;
+    result += `points: ${volumeCredits}\n`;
+
+    return result;
+
+    function amountFor(perf, play) {
         let thisAmount = 0;
 
         switch (play.type) {
@@ -68,20 +86,8 @@ function statement(invoice, plays) {
                 throw new Error(`Unknown genre: ${play.type}`);
         }
 
-        volumeCredits += Math.max(perf.audience - 30, 0);
-
-        if ("comedy" === play.type) {
-            volumeCredits += Math.floor(perf.audience / 5);
-        }
-
-        result += `  ${play.name}: ${format(thisAmount / 100)} (${perf.audience} seats)\n`;
-        totalAmount += thisAmount;
+        return thisAmount;
     }
-
-    result += `total: ${format(totalAmount / 100)}\n`;
-    result += `points: ${volumeCredits}\n`;
-
-    return result;
 }
 
 
