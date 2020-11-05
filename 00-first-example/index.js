@@ -36,9 +36,12 @@ function statement(invoice, plays) {
     let result = `> result (customer: ${invoice.customer})\n`;
 
     for (let perf of invoice.performances) {
-        volumeCredits += volumeCreditsFor(perf);
         result += `  ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
         totalAmount += amountFor(perf);
+    }
+
+    for (let perf of invoice.performances) {
+        volumeCredits += volumeCreditsFor(perf);
     }
 
     result += `total: ${usd(totalAmount)}\n`;
