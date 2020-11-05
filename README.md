@@ -2,7 +2,7 @@
 
 ## When to refactor
 
-If there is a [CodeSmell](https://martinfowler.com/bliki/CodeSmell.html), IT'S TIME TO REFACTOR!
+If there is a [CodeSmell](https://martinfowler.com/bliki/CodeSmell.html), it's likely time to refactor!
 
 ### Kinds of CodeSmell
 1. Mysterious Name
