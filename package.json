@@ -1,0 +1,23 @@
+{
+  "name": "refactoring-training",
+  "version": "1.0.0",
+  "description": "## When to refactor",
+  "main": "index.js",
+  "scripts": {
+    "watch": "mocha '**/*.test.js' -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ygnoh/refactoring-training.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ygnoh/refactoring-training/issues"
+  },
+  "homepage": "https://github.com/ygnoh/refactoring-training#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1"
+  }
+}
