@@ -47,5 +47,13 @@ const show = {};
 const date = {};
 const extras = {};
 
-let booking = new Booking(show, date);
-let premiumBooking = new PremiumBooking(show, date, extras);
+let booking = createBooking(show, date)
+let premiumBooking = createPremiumBooking(show, date, extras);
+
+function createBooking(show, date) {
+    return new Booking(show, date);
+}
+
+function createPremiumBooking(show, date, extras) {
+    return new PremiumBooking(show, date, extras);
+}
