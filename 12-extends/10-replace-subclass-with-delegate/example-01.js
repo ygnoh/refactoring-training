@@ -21,6 +21,10 @@ class Booking {
     get isPeakDay() {
         return false;
     }
+
+    _bePremium() {
+        this._premiumDelegate = new PremiumBookingDelegate(this, extras);
+    }
 }
 
 class PremiumBooking extends Booking {
@@ -62,5 +66,9 @@ function createBooking(show, date) {
 }
 
 function createPremiumBooking(show, date, extras) {
-    return new PremiumBooking(show, date, extras);
+    const result = new PremiumBooking(show, date, extras);
+
+    result._bePremium(extras);
+
+    return result;
 }
