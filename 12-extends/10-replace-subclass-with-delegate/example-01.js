@@ -26,6 +26,12 @@ class Booking {
         return false;
     }
 
+    get hasDinner() {
+        return this._premiumDelegate ?
+            this._premiumDelegate.hasDinner :
+            undefined;
+    }
+
     _bePremium() {
         this._premiumDelegate = new PremiumBookingDelegate(this, extras);
     }
@@ -36,10 +42,6 @@ class PremiumBooking extends Booking {
         super(show, date);
 
         this._extras = extras;
-    }
-
-    get hasDinner() {
-        return this._extras.hasOwnProperty("dinner") && !this.isPeakDay;
     }
 }
 
@@ -55,6 +57,10 @@ class PremiumBookingDelegate {
 
     get hasTalkback() {
         return this._host._show.hasOwnProperty("talkback");
+    }
+
+    get hasDinner() {
+        return this._extras.hasOwnProperty("dinner") && !this._host.isPeakDay;
     }
 }
 
